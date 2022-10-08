@@ -1,0 +1,17 @@
+:host{
+  border: 1px solid black;
+  //height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+
+}
+
+p{
+  margin: 0;
+}
+
+.container{
+  padding: 1rem;
+}
