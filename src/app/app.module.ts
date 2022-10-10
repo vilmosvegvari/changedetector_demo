@@ -10,6 +10,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { TestOnpushComponent } from './test-onpush/test-onpush.component';
 import { Test1OnpushComponent } from './test-onpush/test1-onpush/test1-onpush.component';
 import { Test2OnpushComponent } from './test-onpush/test2-onpush/test2-onpush.component';
+import { DynamicComponentTestComponent } from './dynamic-component-test/dynamic-component-test.component';
+import { CmphostDirective } from './dynamic-component-test/cmphost.directive';
+import { BaseCDComponent } from './base-cd/base-cd.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { Test2OnpushComponent } from './test-onpush/test2-onpush/test2-onpush.co
     Test2Component,
     TestOnpushComponent,
     Test1OnpushComponent,
-    Test2OnpushComponent
+    Test2OnpushComponent,
+    DynamicComponentTestComponent,
+    CmphostDirective,
+    BaseCDComponent
   ],
   imports: [
     BrowserModule,
