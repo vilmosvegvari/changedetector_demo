@@ -10,7 +10,7 @@ import {animate, style, transition, trigger} from "@angular/animations";
       transition('false <=> true',
         [
           style({backgroundColor: 'white'}),
-          animate(500, style({backgroundColor: 'yellow'})),
+          animate(500, style({backgroundColor: 'yellow' })),
         ]),
     ])
   ],
@@ -19,7 +19,7 @@ export class BaseCDComponent {
 
   animation = false;
 
-  render(): Date {
+  change(): Date {
     this.animation = !this.animation;
     return new Date();
   }

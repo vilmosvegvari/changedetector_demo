@@ -1,7 +1,20 @@
-<div class="container" [@flash]="animation">
-  <p>test works!</p>
-  <div>Rendered at {{render()|date: 'HH:mm:ss'}}</div>
-  <button (click)="button()">Empty button</button>
-  <app-test1></app-test1>
-  <app-test1></app-test1>
+<div class="container" (click)="button()" [@flash]="animation">
+  <p><strong>Default</strong></p>
+  <div>Checked at {{render()|date: 'HH:mm:ss'}}</div>
+  <button (click)="changeStrategy()">Change to OnPush</button>
+
+    <ng-container *ngIf="level1a$|async; else defaultStrata">
+      <app-test1-onpush side="a"></app-test1-onpush>
+    </ng-container>
+    <ng-template #defaultStrata>
+      <app-test1 side="a"></app-test1>
+    </ng-template>
+
+    <ng-container *ngIf="level1b$|async; else defaultStratb">
+      <app-test1-onpush side="b"></app-test1-onpush>
+    </ng-container>
+    <ng-template #defaultStratb>
+      <app-test1 side="b"></app-test1>
+    </ng-template>
+
 </div>

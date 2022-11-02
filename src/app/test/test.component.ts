@@ -1,5 +1,8 @@
-import {ChangeDetectorRef, Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {animate, animateChild, query, style, transition, trigger} from "@angular/animations";
+import {Store} from "@ngrx/store";
+import {changeState} from "../+state/app.actions";
+import {AppState} from "../+state/app.reducer";
 
 @Component({
   selector: 'app-test',
@@ -20,17 +23,22 @@ import {animate, animateChild, query, style, transition, trigger} from "@angular
 export class TestComponent {
   animation = false;
 
-  constructor(private cdr: ChangeDetectorRef) {
+  level1a$ = this.store.select(e => e.app.level1a);
+  level1b$ = this.store.select(e => e.app.level1b);
+
+  constructor(private store: Store<AppState>) {
   }
 
   render(): Date {
-    console.log('render test')
     this.animation = !this.animation;
-    // this.cdr.detach()
     return new Date();
   }
 
   button(): void {
-    // this.cdr.reattach()
+    //empty func
+  }
+
+  changeStrategy(): void {
+    this.store.dispatch(changeState({level0: true}));
   }
 }

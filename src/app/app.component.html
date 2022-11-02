@@ -1,17 +1,24 @@
-<h3>Very basic demo of change detection.</h3>
-<div class="container">
-  <div class="text">
-    <h4>Default</h4>
-    <app-test></app-test>
-  </div>
+<div class="text-center"><h3>Very basic demo of change detection.</h3></div>
+<!--<div class="container">-->
+<!--  <div class="text">-->
+<!--    <h4>Default</h4>-->
+<!--    <app-test></app-test>-->
+<!--  </div>-->
 
-  <div class="text">
-    <h4>Onpush</h4>
-    <app-test-onpush></app-test-onpush>
-  </div>
+<!--  <div class="text">-->
+<!--    <h4>Onpush</h4>-->
+<!--    <app-test-onpush></app-test-onpush>-->
+<!--  </div>-->
 
+<!--</div>-->
+
+<div class="d-flex justify-content-center">
+  <div class="w-25">
+    <ng-container *ngIf="level0$|async; else defaultStrat">
+      <app-test-onpush></app-test-onpush>
+    </ng-container>
+    <ng-template #defaultStrat>
+      <app-test></app-test>
+    </ng-template>
+  </div>
 </div>
-
-<app-dynamic-component-test></app-dynamic-component-test>
-
-

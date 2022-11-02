@@ -1,5 +1,8 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {animate, animateChild, query, style, transition, trigger} from "@angular/animations";
+import {changeState} from "../+state/app.actions";
+import {Store} from "@ngrx/store";
+import {AppState} from "../+state/app.reducer";
 
 @Component({
   selector: 'app-test-onpush',
@@ -18,20 +21,23 @@ import {animate, animateChild, query, style, transition, trigger} from "@angular
 })
 export class TestOnpushComponent {
 
+  level1a$ = this.store.select(e => e.app.level1a);
+  level1b$ = this.store.select(e => e.app.level1b);
+
   animation = false;
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(private store: Store<AppState>) {
   }
 
   render(): Date {
-    console.log('render test')
     this.animation = !this.animation;
-    // this.cdr.detach()
     return new Date();
   }
 
   button(): void {
-    // this.cdr.reattach()
   }
 
+  changeStrategy(): void {
+    this.store.dispatch(changeState({level0: false}));
+  }
 }

@@ -1,5 +1,8 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {animate, animateChild, query, style, transition, trigger} from "@angular/animations";
+import {changeState} from "../../+state/app.actions";
+import {Store} from "@ngrx/store";
+import {AppState} from "../../+state/app.reducer";
 
 @Component({
   selector: 'app-test1-onpush',
@@ -18,18 +21,29 @@ import {animate, animateChild, query, style, transition, trigger} from "@angular
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Test1OnpushComponent {
+  @Input() side = 'a'
 
   animation = false;
 
+  level2a$ = this.store.select(e => e.app.level2a);
+  level2b$ = this.store.select(e => e.app.level2b);
+  level2c$ = this.store.select(e => e.app.level2c);
+  level2d$ = this.store.select(e => e.app.level2d);
+
+  constructor(private store: Store<AppState>) {
+  }
+
   render(): Date {
-    console.log('render test1-onpush', this.animation)
     this.animation = !this.animation;
-    // this.cdr.detach()
     return new Date();
   }
 
   button(): void {
-    // this.cdr.reattach()
+    // empty
   }
 
+  changeStrategy(): void {
+    const obj = this.side == 'a' ? {level1a: false} : {level1b: false};
+    this.store.dispatch(changeState(obj));
+  }
 }

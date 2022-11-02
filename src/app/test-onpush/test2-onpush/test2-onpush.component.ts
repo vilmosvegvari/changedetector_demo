@@ -1,5 +1,8 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {animate, style, transition, trigger} from "@angular/animations";
+import {Store} from "@ngrx/store";
+import {AppState} from "../../+state/app.reducer";
+import {changeState} from "../../+state/app.actions";
 
 @Component({
   selector: 'app-test2-onpush',
@@ -17,17 +20,43 @@ import {animate, style, transition, trigger} from "@angular/animations";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Test2OnpushComponent {
+  @Input() side = '';
 
   animation = false;
 
+  constructor(private store: Store<AppState>) {
+  }
+
   render(): Date {
-    console.log('render test2')
     this.animation = !this.animation;
-    // this.cdr.detach()
     return new Date();
   }
 
   button(): void {
-    // this.cdr.reattach()
+    // empty
+  }
+
+  changeStrategy(): void {
+    let obj;
+
+    switch (this.side) {
+      case 'a':
+        obj = {level2a: false};
+        break;
+      case 'b':
+        obj = {level2b: false};
+        break;
+      case 'c':
+        obj = {level2c: false};
+        break;
+      case 'd':
+        obj = {level2d: false};
+        break;
+    }
+
+    if (obj !== undefined) {
+
+      this.store.dispatch(changeState(obj));
+    }
   }
 }

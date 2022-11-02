@@ -1,5 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {animate, style, transition, trigger} from "@angular/animations";
+import {Store} from "@ngrx/store";
+import {AppState} from "../../+state/app.reducer";
+import {changeState} from "../../+state/app.actions";
 
 @Component({
   selector: 'app-test2',
@@ -16,18 +19,44 @@ import {animate, style, transition, trigger} from "@angular/animations";
   ],
 })
 export class Test2Component {
+  @Input() side = '';
 
   animation = false;
 
+  constructor(private store: Store<AppState>) {
+  }
+
   render(): Date {
-    console.log('render test2')
     this.animation = !this.animation;
-    // this.cdr.detach()
     return new Date();
   }
 
   button(): void {
-    // this.cdr.reattach()
+    // empty
+  }
+
+  changeStrategy(): void {
+    let obj;
+
+    switch (this.side) {
+      case 'a':
+        obj = {level2a: true};
+        break;
+      case 'b':
+        obj = {level2b: true};
+        break;
+      case 'c':
+        obj = {level2c: true};
+        break;
+      case 'd':
+        obj = {level2d: true};
+        break;
+    }
+
+    if (obj !== undefined) {
+
+      this.store.dispatch(changeState(obj));
+    }
   }
 
 }

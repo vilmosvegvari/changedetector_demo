@@ -1,5 +1,5 @@
-<div class="container" [@flash2]="animation">
-  <p>test2 onpush works!</p>
-  <div>Rendered at {{render()|date: 'HH:mm:ss'}}</div>
-  <button (click)="button()">Empty button</button>
+<div class="container" [@flash2]="animation" (click)="button()">
+  <p><strong>OnPush</strong></p>
+  <div>Checked at {{render()|date: 'HH:mm:ss'}}</div>
+  <button (click)="changeStrategy()">Change to Default</button>
 </div>
