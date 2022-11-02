@@ -12,8 +12,9 @@ import {changeState} from "../../+state/app.actions";
     trigger('flash2', [
       transition('false <=> true',
         [
-          style({backgroundColor: 'white'}),
-          animate(500, style({backgroundColor: 'yellow'}))
+          style({backgroundColor: '#fefae0'}),
+          animate(1000),
+          animate(500, style({backgroundColor: '#bc6c25'}))
         ]),
     ])
   ],

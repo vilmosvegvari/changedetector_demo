@@ -1,36 +1,49 @@
-<div class="container" [@flash1]="animation" (click)="button()">
-  <p><strong>Default</strong></p>
-  <div>Checked at {{render()|date: 'HH:mm:ss'}}</div>
-  <button (click)="changeStrategy()">Change To OnPush</button>
+<div>
+  <div class="cmp w-50 d-inline-block border border-dark rounded p-3" [@flash1]="animation" (click)="button()">
+    <p><strong>Default</strong></p>
+    <div>Checked at {{render()|date: 'HH:mm:ss'}}</div>
+    <button class="btn btn-outline-dark" (click)="changeStrategy()">Change To OnPush</button>
+  </div>
+  <ul>
+    <ng-container *ngIf="side ==='a'; else sideB">
+      <li>
+        <ng-container *ngIf="level2a$|async; else defaultStrata">
+          <app-test2-onpush side="a"></app-test2-onpush>
+        </ng-container>
+        <ng-template #defaultStrata>
+          <app-test2 side="a"></app-test2>
+        </ng-template>
+      </li>
+      <li>
+        <ng-container *ngIf="level2b$|async; else defaultStratb">
+          <app-test2-onpush side="b"></app-test2-onpush>
+        </ng-container>
+        <ng-template #defaultStratb>
+          <app-test2 side="b"></app-test2>
+        </ng-template>
+      </li>
+    </ng-container>
 
-  <ng-container *ngIf="side ==='a'; else sideB">
-      <ng-container *ngIf="level2a$|async; else defaultStrata">
-        <app-test2-onpush side="a"></app-test2-onpush>
-      </ng-container>
-      <ng-template #defaultStrata>
-        <app-test2 side="a"></app-test2>
-      </ng-template>
-      <ng-container *ngIf="level2b$|async; else defaultStratb">
-        <app-test2-onpush side="b"></app-test2-onpush>
-      </ng-container>
-      <ng-template #defaultStratb>
-        <app-test2 side="b"></app-test2>
-      </ng-template>
-  </ng-container>
+    <ng-template #sideB>
+      <li>
+        <ng-container *ngIf="level2c$|async; else defaultStratc">
+          <app-test2-onpush side="c"></app-test2-onpush>
+        </ng-container>
+        <ng-template #defaultStratc>
+          <app-test2 side="c"></app-test2>
+        </ng-template>
+      </li>
+      <li>
+        <ng-container *ngIf="level2d$|async; else defaultStratd">
+          <app-test2-onpush side="d"></app-test2-onpush>
+        </ng-container>
+        <ng-template #defaultStratd>
+          <app-test2 side="d"></app-test2>
+        </ng-template>
+      </li>
+    </ng-template>
+  </ul>
 
-  <ng-template #sideB>
-      <ng-container *ngIf="level2c$|async; else defaultStratc">
-        <app-test2-onpush side="c"></app-test2-onpush>
-      </ng-container>
-      <ng-template #defaultStratc>
-        <app-test2 side="c"></app-test2>
-      </ng-template>
-      <ng-container *ngIf="level2d$|async; else defaultStratd">
-        <app-test2-onpush side="d"></app-test2-onpush>
-      </ng-container>
-      <ng-template #defaultStratd>
-        <app-test2 side="d"></app-test2>
-      </ng-template>
-  </ng-template>
 </div>
+
 

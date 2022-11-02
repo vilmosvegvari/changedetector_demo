@@ -1,5 +1,5 @@
-<div class="container" [@flash2]="animation" (click)="button()">
+<div class="cmp d-inline-block border border-dark rounded p-3" [@flash2]="animation" (click)="button()">
   <p><strong>OnPush</strong></p>
   <div>Checked at {{render()|date: 'HH:mm:ss'}}</div>
-  <button (click)="changeStrategy()">Change to Default</button>
+  <button class="btn btn-outline-dark" (click)="changeStrategy()">Change to Default</button>
 </div>

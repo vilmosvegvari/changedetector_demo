@@ -9,8 +9,8 @@ import {animate, style, transition, trigger} from "@angular/animations";
     trigger('flash', [
       transition('false <=> true',
         [
-          style({backgroundColor: 'white'}),
-          animate(500, style({backgroundColor: 'yellow' })),
+          style({backgroundColor: '#fefae0'}),
+          animate(500, style({backgroundColor: '#fefae0' })),
         ]),
     ])
   ],

@@ -1,19 +1,26 @@
-<div class="container" [@flash]="animation" (click)="button()">
-  <p><strong>OnPush</strong></p>
-  <div>Checked at {{render()|date: 'HH:mm:ss'}}</div>
-  <button (click)="changeStrategy()">Change to default</button>
+<div>
+  <div class="cmp w-25 d-inline-block border border-dark rounded p-3" [@flash]="animation" (click)="button()">
+    <p><strong>OnPush</strong></p>
+    <div>Checked at {{render()|date: 'HH:mm:ss'}}</div>
+    <button class="btn btn-outline-dark" (click)="changeStrategy()">Change to default</button>
+  </div>
+  <ul>
+    <li>
+      <ng-container *ngIf="level1a$|async; else defaultStrata">
+        <app-test1-onpush side="a"></app-test1-onpush>
+      </ng-container>
+      <ng-template #defaultStrata>
+        <app-test1 side="a"></app-test1>
+      </ng-template>
+    </li>
+    <li>
+      <ng-container *ngIf="level1b$|async; else defaultStratb">
+        <app-test1-onpush side="b"></app-test1-onpush>
+      </ng-container>
+      <ng-template #defaultStratb>
+        <app-test1 side="b"></app-test1>
+      </ng-template>
+    </li>
 
-  <ng-container *ngIf="level1a$|async; else defaultStrata">
-    <app-test1-onpush side="a"></app-test1-onpush>
-  </ng-container>
-  <ng-template #defaultStrata>
-    <app-test1 side="a"></app-test1>
-  </ng-template>
-  <ng-container *ngIf="level1b$|async; else defaultStratb">
-    <app-test1-onpush side="b"></app-test1-onpush>
-  </ng-container>
-  <ng-template #defaultStratb>
-    <app-test1 side="b"></app-test1>
-  </ng-template>
-
+  </ul>
 </div>

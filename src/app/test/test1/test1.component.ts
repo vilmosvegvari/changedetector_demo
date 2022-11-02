@@ -5,19 +5,19 @@ import {Store} from "@ngrx/store";
 import {AppState} from "../../+state/app.reducer";
 
 @Component({
-  selector: ' app-test1',
+  selector: 'app-test1',
   templateUrl: './test1.component.html',
   styleUrls: ['./test1.component.scss'],
   animations: [
     trigger('flash1', [
       transition('false <=> true',
         [
-          style({backgroundColor: 'white'}),
-          animate(500, style({backgroundColor: 'red'})),
-          query('@flash2', animateChild()),
+          style({backgroundColor: '#fefae0'}),
+          animate(500),
+          animate(500, style({backgroundColor: '#bc6c25'})),
         ]),
     ])
-  ],
+  ]
 })
 export class Test1Component {
   @Input() side = '';

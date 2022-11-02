@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {animate, animateChild, query, style, transition, trigger} from "@angular/animations";
+import {animate,  style, transition, trigger} from "@angular/animations";
 import {changeState} from "../+state/app.actions";
 import {Store} from "@ngrx/store";
 import {AppState} from "../+state/app.reducer";
@@ -12,9 +12,8 @@ import {AppState} from "../+state/app.reducer";
     trigger('flash', [
       transition('false <=> true',
         [
-          style({backgroundColor: 'white'}),
-          animate(500, style({backgroundColor: 'yellow'})),
-          query('@flash1', animateChild())
+          style({backgroundColor: '#fefae0'}),
+          animate(500, style({backgroundColor: '#bc6c25'})),
         ]),
     ])
   ],
@@ -35,6 +34,7 @@ export class TestOnpushComponent {
   }
 
   button(): void {
+    //empty
   }
 
   changeStrategy(): void {

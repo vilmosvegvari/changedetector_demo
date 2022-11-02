@@ -12,9 +12,9 @@ import {AppState} from "../../+state/app.reducer";
     trigger('flash1', [
       transition('false <=> true',
         [
-          style({backgroundColor: 'white'}),
-          animate(500, style({backgroundColor: 'red'})),
-          query('@flash2', animateChild()),
+          style({backgroundColor: '#fefae0'}),
+          animate(500),
+          animate(500, style({backgroundColor: '#bc6c25'})),
         ]),
     ])
   ],

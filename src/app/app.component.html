@@ -1,24 +1,34 @@
-<div class="text-center"><h3>Very basic demo of change detection.</h3></div>
-<!--<div class="container">-->
-<!--  <div class="text">-->
-<!--    <h4>Default</h4>-->
-<!--    <app-test></app-test>-->
-<!--  </div>-->
-
-<!--  <div class="text">-->
-<!--    <h4>Onpush</h4>-->
-<!--    <app-test-onpush></app-test-onpush>-->
-<!--  </div>-->
-
-<!--</div>-->
+<h3 >Demo of Angular Change detection</h3>
+<h6 class="text-secondary mb-4">Selectable Changedetection strategy animated.</h6>
 
 <div class="d-flex justify-content-center">
-  <div class="w-25">
-    <ng-container *ngIf="level0$|async; else defaultStrat">
-      <app-test-onpush></app-test-onpush>
-    </ng-container>
-    <ng-template #defaultStrat>
-      <app-test></app-test>
-    </ng-template>
+  <div class="tree">
+    <ul>
+      <li>
+        <ng-container *ngIf="level0$|async; else defaultStrat">
+          <app-test-onpush></app-test-onpush>
+        </ng-container>
+        <ng-template #defaultStrat>
+          <app-test></app-test>
+        </ng-template>
+      </li>
+    </ul>
   </div>
 </div>
+
+
+<h4 class="mb-4">How it works</h4>
+<p>There are 2 types of ChangeDetection strategy:</p>
+
+<ul class="list-unstyled">
+  <li><strong>Default: </strong> Every event triggers the ChangeDetection. </li>
+  <li><strong>OnPush: </strong> Only triggers when an component or children component event handler gets triggered or an template observable emits</li>
+</ul>
+
+<p>The projects shows the detection by interpolating a method in template.</p>
+<p class="fst-italic" > {{'{{'}} test() {{'}'}}{{'}'}}</p>
+<p>The function gets called on every cycle, because the framework does not know what is the return value.</p>
+<p>Method-call triggers an animation which changes the background color for 500ms.</p>
+<p>The strategy changing mechanism based on a global app state by NgRx store.</p>
+<p>Each component has a boolean which can be changed by the buttons.</p>
+
