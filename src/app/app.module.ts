@@ -13,6 +13,7 @@ import { Test2OnpushComponent } from './test-onpush/test2-onpush/test2-onpush.co
 import { DynamicComponentTestComponent } from './dynamic-component-test/dynamic-component-test.component';
 import { CmphostDirective } from './dynamic-component-test/cmphost.directive';
 import { BaseCDComponent } from './base-cd/base-cd.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BaseCDComponent } from './base-cd/base-cd.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]

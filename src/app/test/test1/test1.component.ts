@@ -30,4 +30,8 @@ export class Test1Component {
   button(): void {
     // this.cdr.reattach()
   }
+
+  onType() {
+    // console.log(text)
+  }
 }
